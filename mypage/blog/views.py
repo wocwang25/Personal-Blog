@@ -4,6 +4,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from .forms import EmailPostForm
 
+
+
 def post_share(request, post_id):
     # Retrieve post by id
     post = get_object_or_404(
