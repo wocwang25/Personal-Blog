@@ -13,4 +13,34 @@
             Share this post
         </a>
     </p>
+    {% with similar_posts.count as total_similar_posts %}
+        <h2>
+            Similar post{{total_similar_posts|pluralize}}
+        </h2>
+    {% endwith %}
+    {% for post in similar_posts %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </p>
+    {%empty%}
+        there are no similar posts yet.
+    {%endfor%}
+    {% with comments.count as total_comments %}
+        <h2>
+            {{total_comments}} comment{{total_comments|pluralize}}
+        </h2>
+    {% endwith %}
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="infor">
+                Comment {{ forloop.counter }} by {{ comment.name }}
+                {{ comment.created }}
+            </p>
+            {{ comment.body|linebreaks}}
+        </div>
+        {% empty %}
+            <p> There are no comments </p>
+    {% endfor %}
+
+    {% include "blog/post/includes/comment_form.html" %}
 {% endblock %}

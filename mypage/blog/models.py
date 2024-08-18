@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 from django.urls import reverse
-
+from taggit.managers import TaggableManager
 # Create your models here.
 
 class PublishedManager(models.Manager):
@@ -10,7 +10,6 @@ class PublishedManager(models.Manager):
         return (
             super().get_queryset().filter(status=Post.Status.PUBLISHED)
         )
-
 
 class Post(models.Model):
     class Status(models.TextChoices):
@@ -40,6 +39,7 @@ class Post(models.Model):
     
     objects = models.Manager()
     published = PublishedManager()
+    tags = TaggableManager()
 
     class Meta():
         ordering = ['-publish']
@@ -61,8 +61,7 @@ class Post(models.Model):
             ]
         )
     
-print(Post.Status.choices)
-
+#print(Post.Status.choices)
 
 class Comment(models.Model):
     post = models.ForeignKey(
