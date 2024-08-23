@@ -113,12 +113,14 @@ def post_list(request, tag_slug=None):
         posts = paginator.page(1)
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
+    current_total = len(posts)
     return render(
         request,
         'blog/post/list.html',
         {
             'posts': posts, 
-            'tag' : tag
+            'tag' : tag,
+            'current_total' : current_total
         }
     )
 
