@@ -30,11 +30,12 @@ DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m)$2#5y3ny3i5s@9agdc%_a2jqe8il)@_jp(ynph4@2g&9iie='
+SECRET_KEY = 'django-insecure-m)$2#5y3ny3i5s@9agdc%_a2jqe8il)@_jp(ynph4@2g&9iie='/
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
